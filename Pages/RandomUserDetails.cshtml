@@ -1,0 +1,37 @@
+﻿@page
+@model MotivWebApp.Pages.RandomUserDetailsModel
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@{
+    ViewData["Title"] = "Random User Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@{
+    <form asp-page-handler="CallAPI" method="get">
+        <button>Fetch new user</button>
+    </form>
+    <div class="center">
+        <div class="card card-width">
+            <img class="card-img-top img-size" src="@Model.UserDetail.Picture.Large" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text"><strong>Name:</strong> @Model.UserDetail.Name.First @Model.UserDetail.Name.Last</p>
+                <p class="card-text"><strong>Age:</strong> @Model.UserDetail.Dob.Age</p>
+                <p class="card-text"><strong>Gender:</strong> @Model.UserDetail.Gender</p>
+                <p class="card-text"><strong>Email:</strong> @Model.UserDetail.Email</p>
+                <p class="card-text"><strong>Phone:</strong> @Model.UserDetail.Phone</p>
+                <p class="card-text">
+                    <strong>Location:<br /></strong>
+                    @Model.UserDetail.Location.Street.Number,
+                    @Model.UserDetail.Location.Street.Name<br />
+                    @Model.UserDetail.Location.City,
+                    @Model.UserDetail.Location.State<br />
+                    @Model.UserDetail.Location.Postcode<br />
+                    @Model.UserDetail.Location.Country
+                </p>
+            </div>
+        </div>
+    </div>
+}

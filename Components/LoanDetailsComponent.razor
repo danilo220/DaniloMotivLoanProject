@@ -1,0 +1,51 @@
+﻿@using MotivWebApp.Interfaces;
+@using MotivWebApp.Models;
+@inject ILoanService ILoanService
+
+@if (User.Loan.IsLoanAccepted)
+{
+    <h3>Hi @User?.Name?.Title @User?.Name?.First @User?.Name?.Last here are your loan quote details:</h3>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Loan Amount</th>
+                <td>@poundsSymbol@FormatToTwoDecimalPlaces(@User?.Loan?.LoanAmount)</td>
+            </tr>
+            <tr>
+                <th>Total with interest</th>
+                <td>@poundsSymbol@FormatToTwoDecimalPlaces(@User?.Loan?.TotalAmountWithInterest)</td>
+            </tr>
+            <tr>
+                <th>Monthly Payment</th>
+                <td>@poundsSymbol@FormatToTwoDecimalPlaces(@User?.Loan?.MonthlyPayment)</td>
+            </tr>
+            <tr>
+                <th>APR</th>
+                <td>@User?.Loan?.InterestRate%</td>
+            </tr>
+            <tr>
+                <th>Number of payments</th>
+                <td>@User?.Loan?.NumberOfPayments</td>
+            </tr>
+            <tr>
+                <th>Amount charged in interest</th>
+                <td>@poundsSymbol@FormatToTwoDecimalPlaces(@User?.Loan?.AmountChargedInInterest)</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="interest-rate-message-container">
+        <p>Based on your annual income of: @poundsSymbol@User?.AnnualIncome we can offer you an APR of:</p>
+        <div class="interest-rate">@User?.Loan.InterestRate@percentageSymbol</div>
+    </div>
+    <div>
+        <p>You will receive more details on your email: <strong>@User?.Email</strong> and a SMS on your number: <strong>@User?.Phone</strong></p>
+    </div>
+}
+else
+{
+    <div class="loan-declined-wrapper">
+        <div class="loan-declined-title">Sorry your loan has been declined.</div>
+        <p>Your annual income of <strong>@poundsSymbol@User?.AnnualIncome</strong> is not enough for a loan.</p>
+        <p>Your annual income must be: <strong>@poundsSymbol@User?.Loan.MinimumSalaryRequired minimum.</strong></p>
+    </div>
+}

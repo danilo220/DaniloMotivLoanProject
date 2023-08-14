@@ -1,0 +1,29 @@
+﻿.interest-rate-message-container {
+    background-color: cornflowerblue;
+    text-align: center;
+}
+
+.interest-rate-message-container > p {
+    color: white;
+    font-size: 25px;
+}
+
+.interest-rate {
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.loan-declined-wrapper {
+    background-color: darkred;
+}
+
+.loan-declined-wrapper > p {
+    color: white;
+    font-size: 25px;
+}
+
+.loan-declined-title {
+    color: white;
+    font-size: 50px;
+}

@@ -1,0 +1,69 @@
+﻿@page
+@model MotivWebApp.Pages.UserFormModel
+
+@{
+    ViewData["Title"] = "UserForm";
+    <div>
+        <h1>Enter your details for a loan quote:</h1>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="User.Name.Title" class="control-label"></label><br>
+                        <select name="User.Name.Title">
+                            @foreach (String title in Model.Titles)
+                            {
+                                <option value="@title">@title</option>
+                            }
+                        </select>
+                        <span asp-validation-for="User.Name.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="User.Name.First" class="control-label"></label>
+                        <input type="text" asp-for="User.Name.First" class="form-control" />
+                        <span asp-validation-for="User.Name.First" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="User.Name.Last" class="control-label"></label>
+                        <input type="text" asp-for="User.Name.Last" class="form-control" />
+                        <span asp-validation-for="User.Name.Last" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="User.Email" class="control-label"></label>
+                        <input type="email" asp-for="User.Email" class="form-control" />
+                        <span asp-validation-for="User.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="User.Phone" class="control-label"></label>
+                        <input asp-for="User.Phone" class="form-control" />
+                        <span asp-validation-for="User.Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="User.AnnualIncome" class="control-label"></label>
+                        <input type="number" min="1" asp-for="User.AnnualIncome" class="form-control" />
+                        <span asp-validation-for="User.AnnualIncome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="User.Loan.LoanAmount" class="control-label"></label>
+                        <input type="number" min="1" asp-for="User.Loan.LoanAmount" class="form-control" />
+                        <span asp-validation-for="User.Loan.LoanAmount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="User.Loan.NumberOfYears" class="control-label"></label>
+                        <input type="number" min="1" max="8" asp-for="User.Loan.NumberOfYears" class="form-control" />
+                        <span asp-validation-for="User.Loan.NumberOfYears" class="text-danger"></span>
+                    </div>
+                    <br><div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,16 @@
+﻿@page
+@model MotivWebApp.Pages.UserLoanDetailsModel
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "UserLoanDetails";
+}
+
+<div>
+    <div class="loan-details-wrapper">
+        <div class="card">
+            @(await Html.RenderComponentAsync<MotivWebApp.Components.LoanDetailsComponent>(RenderMode.ServerPrerendered, new { UserId = Model.User.Id }))
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,13 @@
+﻿.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-width {
+    width: 300px;
+}
+
+.img-size {
+    width: 100%;
+    height: 200px
+}
